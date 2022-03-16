@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-/**Nome: Victor Matheus Carvalho Pinheiro
- * Nome: Victor Gabriel Alves Pereira 
+/**
+ * Main
  */
 public class Main {
     public static void main(String[] args) {

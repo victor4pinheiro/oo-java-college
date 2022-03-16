@@ -1,8 +1,5 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-/**Nome: Victor Matheus Carvalho Pinheiro
- * Nome: Victor Gabriel Alves Pereira 
- */
 
 /**
  * Cria uma fila de contatos baseando-se no formato de uma lista encadeada
@@ -11,6 +8,10 @@ import java.util.regex.Pattern;
  * clientes
  * 
  * FilaContatoClientes
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class FilaContatoClientes {
     private Contato inicio, fim;
