@@ -66,6 +66,33 @@ public class FilaContatoClientes {
     }
 
     /**
+     * Lista todos os contatos usando o conceito de interação de uma lista encadeada
+     * se e somente se a lista não estiver nula
+     */
+    public void listarContato() {
+        if (this.inicio == null) {
+            System.out.println("Lista vazia");
+            return;
+        }
+
+        Contato atualContato = this.inicio;
+        int quantidadeContatos = 1;
+
+        System.out.println("Lista de contatos");
+
+        while (atualContato != null) {
+            System.out.println("Contato nº" + quantidadeContatos);
+            System.out.println("Nome: " + atualContato.nome);
+            System.out.println("Número do telefone residencial: " + atualContato.numeroTelefoneCasa);
+            System.out.println("Número de celular: " + atualContato.numeroCelular);
+            System.out.println("Número de telefone do trabalho: " + atualContato.numeroTelefoneTrabalho);
+            System.out.print("\n");
+            atualContato = atualContato.proximo;
+            quantidadeContatos++;
+        }
+    }
+
+    /**
      * Verifica se a fila está vazia, interropendo caso sim. Caso tenha valores, vai
      * ao próximo, indica que a fila diminuiu seu tamanho
      */
@@ -80,7 +107,7 @@ public class FilaContatoClientes {
     }
 
     /**
-     * Verifica se o número digitado está formando conforme os modelos: (XX)
+     * Verifica se o número digitado está formatado conforme os modelos: (XX)
      * XXXXX-XXXX e (XX) XXXX-XXXX
      * 
      * @param numeroTelefone numero de telefone (celular, residencial ou do
