@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
  * clientes
  * 
  * FilaContatoClientes
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class FilaContatoClientes {
     private Contato inicio, fim;
