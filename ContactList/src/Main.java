@@ -1,7 +1,14 @@
 import java.util.Scanner;
 
 /**
+ * Permite que o usuário interaja, via linha de comando, com o programa,
+ * permitindo adicionar contatos, verificar o próximo contato e sair do programa
+ * 
  * Main
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +20,9 @@ public class Main {
             System.out.println("Selecione as seguintes opções");
             System.out.println("[1] - |Adicionar contato|");
             System.out.println("[2] - |Próximo contato|");
-            System.out.println("[3] - |Sair do programa|");
+            System.out.println("[3] - |Listar contatos|");
+            System.out.println("[4] - |Sair do programa|");
+            String nome, numeroTelefoneCasa, numeroCelular, numeroTelefoneTrabalho = null;
             int option = ler.nextInt();
 
             /** Estrutura de condição para o usuário efetuar a opção escolhida, ou sair. */
@@ -21,10 +30,9 @@ public class Main {
                 case 1:
                     System.out.println("|Adicionar Contato|");
                     System.out.println("Nome do contato:");
-                    String nome = ler.nextLine();
-                    String numeroTelefoneCasa, numeroCelular, numeroTelefoneTrabalho = null;
+                    ler.nextLine(); // consume line leftover
 
-                    ler.nextLine();
+                    nome = String.valueOf(ler.nextLine());
                     do {
                         System.out.println(
                                 "Numero de telefone residencial (Ex: (61) xxxx-xxxx):");
@@ -55,6 +63,10 @@ public class Main {
                     break;
 
                 case 3:
+                    contatoCallCenter.listarContato();
+                    break;
+
+                case 4:
                     System.out.println("\n===Você encerrou a lista de contatos.===");
                     System.exit(0);
                     break;
