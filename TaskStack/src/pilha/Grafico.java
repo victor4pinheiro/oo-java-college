@@ -2,6 +2,13 @@ package pilha;
 
 import java.util.Scanner;
 
+/**
+ * Permite que o usuário crie e pule para a próxima tarefa (se e somente se a primeira estiver concluída) através do terminal
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ *
+ */
 public class Grafico {
 	public static void main(String[] args) {
 		Pilha pilhaTarefas = new Pilha();
@@ -18,7 +25,7 @@ public class Grafico {
 			option = entrada.nextInt();
 			
 			switch (option) {
-			case 1:
+			case 1: // Adicionar tarefa
 				System.out.println("Digite o nome da tarefa:");
 				entrada.nextLine();
 				String nome = entrada.nextLine();
@@ -30,7 +37,7 @@ public class Grafico {
 				pilhaTarefas.adicionarTarefa(tarefa);
 				break;
 				
-			case 2:
+			case 2: // Obter a próxima tarefa
 				Tarefa tmp = pilhaTarefas.proximaTarefa();
 				
 				if (tmp == null) {
@@ -41,11 +48,11 @@ public class Grafico {
 				}
 				break;
 				
-			case 3:
+			case 3: // Listar tarefas
 				pilhaTarefas.listarTarefas();
 				break;
 				
-			case 4:
+			case 4: // Sair do programa
 				entrada.close();
 				System.exit(0);
 				break;
