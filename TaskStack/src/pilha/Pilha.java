@@ -39,9 +39,11 @@ public class Pilha {
 	 * Lista todas as tarefas presentes na pilha se e somente se não estver nula
 	 */
 	public void listarTarefas() {
+		System.out.println("Tarefas:");
 		for (Tarefa tarefa : tarefas) {
-			System.out.println(tarefa.getNome());
-			System.out.println(tarefa.getDescricao());
+			System.out.println("Nome: " + tarefa.getNome());
+			System.out.println("Descrição: " + tarefa.getDescricao());
+			System.out.println();
 		}
 	}
 }

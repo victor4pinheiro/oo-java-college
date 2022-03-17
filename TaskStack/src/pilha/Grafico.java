@@ -43,8 +43,8 @@ public class Grafico {
 				if (tmp == null) {
 					System.out.println("Nulo");
 				} else {
-					System.out.println(tmp.getNome());
-					System.out.println(tmp.getDescricao());
+					System.out.println("Nome: " + tmp.getNome());
+					System.out.println("Descrição: " + tmp.getDescricao());
 				}
 				break;
 				
