@@ -2,7 +2,7 @@ package sistema;
 
 public class Estudante {
   private String nome;
-  private long matricula;
+  private int matricula;
   private Curso curso;
   private int periodo;
 
@@ -14,11 +14,11 @@ public class Estudante {
     this.nome = nome;
   }
 
-  public long getMatricula() {
+  public int getMatricula() {
     return matricula;
   }
 
-  public void setMatricula(long matricula) {
+  public void setMatricula(int matricula) {
     this.matricula = matricula;
   }
 
