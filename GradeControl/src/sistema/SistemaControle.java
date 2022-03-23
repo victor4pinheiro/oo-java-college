@@ -58,8 +58,13 @@ public class SistemaControle {
    * @return verdadeiro se a adição da disciplina ao curso foi bem sucedida, caso
    *         contrário, retorna falso.
    */
-  public boolean adicionarDisciplina(Curso curso, Disciplina disciplina) {
-    return curso.adicionarDisciplina(disciplina);
+  public boolean adicionarDisciplina(String nomeCurso, Disciplina disciplina) {
+    for (Curso cursoAdicao : cursos) {
+      if (cursoAdicao.getNome().equals(nomeCurso)) {
+        return cursoAdicao.adicionarDisciplina(disciplina);
+      }
+    }
+    return false;
   }
 
   /**
