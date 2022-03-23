@@ -60,9 +60,12 @@ public class Curso {
     this.graduacao = graduacao;
   }
 
-  public boolean adicionarDisciplina(Disciplina disciplina) {
-    if (this.disciplinas.contains(disciplina))
-      return false;
-    return this.disciplinas.add(disciplina);
+  public boolean adicionarDisciplina(Disciplina novaDisciplina) {
+    for (Disciplina disciplina : disciplinas) {
+      if (disciplina.getNome().equals(novaDisciplina.getNome()) ||
+          disciplina.getCodigo().equals(novaDisciplina.getCodigo()))
+        return false;
+    }
+    return this.disciplinas.add(novaDisciplina);
   }
 }
