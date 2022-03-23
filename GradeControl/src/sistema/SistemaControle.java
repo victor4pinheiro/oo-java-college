@@ -75,4 +75,12 @@ public class SistemaControle {
 
     return this.estudantes.add(estudante);
   }
+
+  public Estudante listarDadosEstudante(String nome) {
+    for (Estudante estudante : estudantes) {
+      if (estudante.getNome().equals(nome))
+        return estudante;
+    }
+    return null;
+  }
 }
