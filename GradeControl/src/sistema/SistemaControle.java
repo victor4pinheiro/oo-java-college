@@ -8,7 +8,7 @@ public class SistemaControle {
   List<Estudante> estudantes = new LinkedList<Estudante>();
 
   /**
-   * Verificará se existe o curso na univerdade. Caso verdadeiro,
+   * Verificará se existe o curso na universidade. Caso verdadeiro,
    * retorna falso, caso contrário, permite a inserção de mais um curso na
    * universidade em uma lista de cursos.
    *
@@ -16,8 +16,36 @@ public class SistemaControle {
    * @return verdadeiro se a adição do curso ao sistema foi bem sucedida, caso
    *         contrário, retorna falso.
    */
-  public boolean adicionarCurso(Curso curso) {
-    return this.cursos.add(curso);
+  public boolean adicionarCurso(Curso novoCurso) {
+    for (Curso curso : cursos) {
+      if (curso.getCodigo().equals(novoCurso.getCodigo()))
+        return false;
+      if (curso.getNome().equals(novoCurso.getNome()))
+        return false;
+    }
+    return this.cursos.add(novoCurso);
+  }
+
+  /**
+   * Verifica se o curso passado via parâmetro existe e retorna ele caso exista.
+   * 
+   * @param nomeCurso nome do curso a ser buscado na lista de cursos.
+   * @return Curso caso verdadeiro, caso falso, retorna nulo indicando que o curso
+   *         não existe.
+   */
+  public Curso verificarCurso(String nomeCurso) {
+    for (Curso curso : cursos) {
+      if (curso.getNome().equals(nomeCurso))
+        return curso;
+    }
+    return null;
+  }
+
+  /**
+   * Mostrará ao usuário os cursos listados no sistema, e suas informações.
+   */
+  public List<Curso> listarCurso() {
+    return cursos;
   }
 
   /**
