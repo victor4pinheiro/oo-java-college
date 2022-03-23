@@ -76,6 +76,19 @@ public class SistemaControle {
     return null;
   }
 
+  public List<Disciplina> listarDisciplinasPorPeriodo(int periodo, Curso curso) {
+    List<Disciplina> tmpDisciplinas = new LinkedList<Disciplina>();
+    for (Curso tmpCurso : cursos) {
+      if (tmpCurso.equals(curso)) {
+        for (Disciplina disciplina : curso.disciplinas) {
+          if (disciplina.getPeriodo() == periodo)
+            tmpDisciplinas.add(disciplina);
+        }
+      }
+    }
+    return tmpDisciplinas;
+  }
+
   /**
    * Adicionará um estudante à universidade com um curso já definido.
    * 
