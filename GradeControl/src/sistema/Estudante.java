@@ -37,13 +37,4 @@ public class Estudante {
   public void setPeriodo(int periodo) {
     this.periodo = periodo;
   }
-
-  public boolean adicionarCurso(String codigo, String nome, String duracao, String turno, String modalidade,
-      String graduacao) {
-    if (this.curso != null)
-      return false;
-
-    curso = new Curso(codigo, nome, duracao, turno, modalidade, graduacao);
-    return true;
-  }
 }
