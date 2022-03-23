@@ -67,6 +67,15 @@ public class SistemaControle {
     return false;
   }
 
+  public List<Disciplina> listarTodasDisciplinas(Curso cursoVerificacao) {
+    for (Curso curso : cursos) {
+      if (curso.equals(cursoVerificacao)) {
+        return curso.disciplinas;
+      }
+    }
+    return null;
+  }
+
   /**
    * Adicionará um estudante à universidade com um curso já definido.
    * 
