@@ -7,10 +7,7 @@ import controller.SistemaController;
 import model.Curso;
 
 public class CursoView {
-  SistemaController sistema = new SistemaController();
-
-  public void adicionarCurso() {
-    Scanner entrada = new Scanner(System.in);
+  public void adicionarCurso(Scanner entrada, SistemaController sistema) {
     Curso novoCurso = new Curso();
 
     System.out.println("Código do curso:");
@@ -33,15 +30,17 @@ public class CursoView {
     System.out.println("Ex.: Bacharelado, Licenciatura, Pós, Especialização, Mestrado, Doutorado, Pós-doc");
     novoCurso.setGraduacao(entrada.next());
 
-    entrada.close();
     if (!sistema.adicionarCurso(novoCurso)) {
       novoCurso = null;
       System.out.println("Não foi possível adicionar o novo curso ao sistema.");
       System.out.println("Motivo: Curso já existente.");
+      return;
     }
+
+    System.out.println("Curso adicionado com sucesso");
   }
 
-  public void listarCurso() {
+  public void listarCurso(SistemaController sistema) {
     List<Curso> tmpCursos = sistema.listarCurso();
     for (Curso curso : tmpCursos) {
       System.out.println("----------------------------");

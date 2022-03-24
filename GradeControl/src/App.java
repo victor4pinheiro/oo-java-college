@@ -1,17 +1,19 @@
 import java.util.Scanner;
 
+import controller.SistemaController;
 import view.CursoView;
 import view.DisciplinaView;
 import view.EstudanteView;
 
 public class App {
   public static void main(String[] args) {
-    Scanner entrada = new Scanner(System.in);
+    SistemaController sistema = new SistemaController();
     CursoView curso = new CursoView();
     DisciplinaView disciplina = new DisciplinaView();
     EstudanteView estudante = new EstudanteView();
 
     while (true) {
+      Scanner entrada = new Scanner(System.in);
       System.out.println("1 - Adicionar curso ao sistema");
       System.out.println("2 - Mostrar os cursos ofertados");
       System.out.println("3 - Adicionar disciplina ao curso");
@@ -24,35 +26,29 @@ public class App {
 
       switch (option) {
         case 1:
-          curso.adicionarCurso();
+          curso.adicionarCurso(entrada, sistema);
           break;
-
         case 2:
-          curso.listarCurso();
+          curso.listarCurso(sistema);
           break;
-
         case 3:
-          disciplina.adicionarDisciplina();
+          disciplina.adicionarDisciplina(entrada, sistema);
           break;
-
         case 4:
-          disciplina.listarTodasDisciplinas();
+          disciplina.listarTodasDisciplinas(entrada, sistema);
           break;
         case 5:
-          disciplina.listarDisciplinasPorPeriodo();
+          disciplina.listarDisciplinasPorPeriodo(entrada, sistema);
           break;
         case 6:
-          estudante.adicionarEstudante();
+          estudante.adicionarEstudante(entrada, sistema);
           break;
-
         case 7:
-          estudante.listarDadosEstudante();
+          estudante.listarDadosEstudante(entrada, sistema);
           break;
-
         case 8:
-          estudante.definirNotaDisciplina();
+          estudante.definirNotaDisciplina(entrada, sistema);
           break;
-
         case 99:
           entrada.close();
           System.exit(0);

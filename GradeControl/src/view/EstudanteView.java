@@ -5,17 +5,15 @@ import java.util.Scanner;
 
 import controller.SistemaController;
 import model.Curso;
+import model.Disciplina;
 import model.Estudante;
 
 /**
  * EstudanteView
  */
 public class EstudanteView {
-  public void adicionarEstudante() {
+  public void adicionarEstudante(Scanner entrada, SistemaController sistema) {
     Estudante estudante = new Estudante();
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
-
     System.out.println("Nome do curso:");
     entrada.nextLine();
     String nomeCurso = entrada.nextLine();
@@ -43,10 +41,7 @@ public class EstudanteView {
     System.out.println("Cadastro realizado com sucesso.");
   }
 
-  public void listarDadosEstudante() {
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
-
+  public void listarDadosEstudante(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
     entrada.nextLine();
     String nomeCurso = entrada.nextLine();
@@ -55,15 +50,13 @@ public class EstudanteView {
 
     if (tmpCurso == null) {
       System.out.println("Curso não existente");
-      entrada.close();
       return;
     }
 
     System.out.println("Digite o nome do estudante:");
     String nomeEstudante = entrada.nextLine();
-    entrada.close();
 
-    Estudante tmpEstudante = sistema.listarDadosEstudante(tmpCurso, nomeEstudante);
+    Estudante tmpEstudante = sistema.buscarEstudante(tmpCurso, nomeEstudante);
 
     if (tmpEstudante == null) {
       System.out.println("Estudante não existente.");
@@ -76,37 +69,67 @@ public class EstudanteView {
     System.out.println("Nome do curso: " + tmpEstudante.getCurso().getNome());
   }
 
-  public void definirNotaDisciplina() {
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
+  public void definirNotaDisciplina(Scanner entrada, SistemaController sistema) {
+    System.out.println("Digite o nome do curso do estudante:");
+    entrada.nextLine();
+    String nomeCurso = entrada.nextLine();
 
-    System.out.println("Matrícula do estudante:");
-    int matricula = entrada.nextInt();
+    Curso tmpCurso = sistema.verificarCurso(nomeCurso);
 
-    // if (1 == 2) {
-    // System.out.println("Estudante não existe: ");
-    // return;
-    // }
-    // System.out.println("Digite a disciplina do estudante: ");
-    // for (Curso curso : cursos) {
-    // if (curso.equals(cursoVerificacao)) {
-    // return curso.disciplinas;
-    // }
-    // return null;
-    // }
-    // System.out.println("Defina a nota do 1 semestre:");
-    // estudante.setNota1();
-    // System.out.println("Defina a nota do 2 semestre: ");
-    // estudante.setNota2();
-    // System.out.println("Media: ");
-    // estudante.getMedia();
+    if (tmpCurso == null) {
+      System.out.println("Curso não existente");
+      return;
+    }
 
-    // System.out.println("Nome: " + getNome());
-    // System.out.println("Matrícula: " + getMatricula());
-    // System.out.println("Disciplina: " + getDisciplina());
-    // System.out.println("Notas semestrais " + getNota1(), +getNota2());
-    // System.out.println("Disciplina: " + getMedia());
+    System.out.println("Digite o nome do estudante:");
+    String nomeEstudante = entrada.nextLine();
 
-    // System.out.println("Nome do estudante");
+    Estudante tmpEstudante = sistema.buscarEstudante(tmpCurso, nomeEstudante);
+
+    if (tmpEstudante == null) {
+      System.out.println("Estudante não existente.");
+      return;
+    }
+
+    System.out.println("Digite a disciplina do estudante:");
+    String nomeDisciplina = entrada.nextLine();
+
+    Disciplina disciplina = sistema.buscarDisciplina(tmpCurso, nomeDisciplina);
+
+    if (disciplina == null) {
+      System.out.println("Disciplina não existente.");
+      return;
+    }
+
+    int quantidadeNotas = 0;
+    do {
+      System.out.println("Quantas notas serão digitadas?");
+      quantidadeNotas = entrada.nextInt();
+
+    } while (quantidadeNotas < 0 || quantidadeNotas > 2);
+
+    if (quantidadeNotas == 0) {
+      System.out.println("Nenhuma alteração realizada;");
+      return;
+    }
+
+    for (int i = 0; i < quantidadeNotas; i++) {
+      System.out.println("Digite a nota " + i + ":");
+      if (!sistema.definirNotaDisciplina(tmpCurso, tmpEstudante, disciplina, entrada.nextFloat(), i)) {
+        System.out.println("Inserção não finalizada. Realizar novamente.");
+        return;
+      }
+    }
+
+    if (quantidadeNotas == 2) {
+      System.out.println("Deseja ver a média semestral? (S/n)");
+      String resposta = entrada.next();
+
+      if (resposta == "n") {
+        System.out.println("Inserção de notas finalizada com sucesso.");
+      }
+    }
+
+    System.out.println("Média semestral: " + sistema.obterNotaSemestral(tmpCurso, tmpEstudante, disciplina));
   }
 }

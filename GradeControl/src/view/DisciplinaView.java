@@ -11,9 +11,7 @@ import model.Disciplina;
  * DisciplinaView
  */
 public class DisciplinaView {
-  public void adicionarDisciplina() {
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
+  public void adicionarDisciplina(Scanner entrada, SistemaController sistema) {
     Disciplina novaDisciplina = new Disciplina();
 
     System.out.println("Digite o nome do curso:");
@@ -22,7 +20,6 @@ public class DisciplinaView {
 
     if (sistema.verificarCurso(nomeCurso) == null) {
       System.out.println("Curso não encontrado");
-      entrada.close();
       return;
     }
 
@@ -51,7 +48,6 @@ public class DisciplinaView {
 
     System.out.println("Turno da disciplina:");
     novaDisciplina.setTurno(entrada.next());
-    entrada.close();
 
     if (!sistema.adicionarDisciplina(nomeCurso, novaDisciplina)) {
       novaDisciplina = null;
@@ -61,14 +57,10 @@ public class DisciplinaView {
     // sistema.atualizarDisciplinasEstudante(nomeCurso, novaDisciplina);
   }
 
-  public void listarTodasDisciplinas() {
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
-
+  public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
     String nomeCurso = entrada.nextLine();
-    entrada.close();
 
     Curso tmpCurso = sistema.verificarCurso(nomeCurso);
 
@@ -99,10 +91,7 @@ public class DisciplinaView {
     }
   }
 
-  public void listarDisciplinasPorPeriodo() {
-    SistemaController sistema = new SistemaController();
-    Scanner entrada = new Scanner(System.in);
-
+  public void listarDisciplinasPorPeriodo(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
     String nomeCurso = entrada.nextLine();
@@ -110,7 +99,6 @@ public class DisciplinaView {
     Curso tmpCurso = sistema.verificarCurso(nomeCurso);
     if (tmpCurso == null) {
       System.out.println("Curso não existente");
-      entrada.close();
       return;
     }
 
@@ -119,7 +107,6 @@ public class DisciplinaView {
       System.out.println("Período do estudante:");
       periodo = entrada.nextInt();
     } while (periodo == 0 || periodo > tmpCurso.getDuracao());
-    entrada.close();
 
     List<Disciplina> disciplinasPeriodo = sistema.listarDisciplinasPorPeriodo(periodo, tmpCurso);
 

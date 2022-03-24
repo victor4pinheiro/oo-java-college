@@ -41,6 +41,19 @@ public class SistemaController {
     return false;
   }
 
+  public Disciplina buscarDisciplina(Curso tmpCurso, String nomeDisciplina) {
+    for (Curso curso : cursos) {
+      if (curso.equals(tmpCurso)) {
+        for (Disciplina disciplina : curso.disciplinas) {
+          if (disciplina.getNome().equals(nomeDisciplina)) {
+            return disciplina;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
   public List<Disciplina> listarTodasDisciplinas(Curso cursoVerificacao) {
     for (Curso curso : cursos) {
       if (curso.equals(cursoVerificacao)) {
@@ -73,7 +86,7 @@ public class SistemaController {
     return false;
   }
 
-  public Estudante listarDadosEstudante(Curso tmpCurso, String nome) {
+  public Estudante buscarEstudante(Curso tmpCurso, String nome) {
     for (Curso curso : cursos) {
       if (curso.equals(tmpCurso)) {
         for (Estudante estudante : curso.estudantes) {
@@ -83,5 +96,35 @@ public class SistemaController {
       }
     }
     return null;
+  }
+
+  public boolean definirNotaDisciplina(Curso tmpCurso, Estudante tmpEstudante, Disciplina tmpDisciplina,
+      Float notaBimestral, int index) {
+    for (Curso curso : cursos) {
+      if (curso.equals(tmpCurso)) {
+        for (Estudante estudante : curso.estudantes) {
+          if (estudante.equals(tmpEstudante))
+            return estudante.definirNotaDisciplina(tmpDisciplina, notaBimestral, index);
+        }
+      }
+    }
+    return false;
+  }
+
+  public float obterNotaSemestral(Curso tmpCurso, Estudante tmpEstudante, Disciplina tmpDisciplina) {
+    for (Curso curso : cursos) {
+      if (curso.equals(tmpCurso)) {
+        for (Estudante estudante : curso.estudantes) {
+          if (estudante.equals(tmpEstudante)) {
+            for (Disciplina disciplina : estudante.getDisciplinas()) {
+              if (disciplina.equals(tmpDisciplina)) {
+                return disciplina.retornaMediaSemestral();
+              }
+            }
+          }
+        }
+      }
+    }
+    return 0;
   }
 }

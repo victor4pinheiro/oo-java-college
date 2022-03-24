@@ -49,4 +49,13 @@ public class Estudante {
   public void setDisciplinas(List<Disciplina> disciplinas) {
     this.disciplinas = disciplinas;
   }
+
+  public boolean definirNotaDisciplina(Disciplina tmpDisciplina, Float notaBimestral, int index) {
+    for (Disciplina disciplina : disciplinas) {
+      if (disciplina.equals(tmpDisciplina)) {
+        disciplina.setNotas(notaBimestral, index);
+      }
+    }
+    return false;
+  }
 }
