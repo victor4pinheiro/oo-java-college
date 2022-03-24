@@ -1,10 +1,14 @@
-package sistema;
+package model;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class Estudante {
   private String nome;
   private int matricula;
   private Curso curso;
   private int periodo;
+  List<Disciplina> disciplinas = new LinkedList<Disciplina>();
 
   public String getNome() {
     return nome;
@@ -36,5 +40,13 @@ public class Estudante {
 
   public void setPeriodo(int periodo) {
     this.periodo = periodo;
+  }
+
+  public List<Disciplina> getDisciplinas() {
+    return disciplinas;
+  }
+
+  public void setDisciplinas(List<Disciplina> disciplinas) {
+    this.disciplinas = disciplinas;
   }
 }

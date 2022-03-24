@@ -1,4 +1,4 @@
-package sistema;
+package model;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +10,8 @@ public class Curso {
   private String turno;
   private String modalidade;
   private String graduacao;
-  List<Disciplina> disciplinas = new LinkedList<Disciplina>();
+  public List<Disciplina> disciplinas = new LinkedList<Disciplina>();
+  public List<Estudante> estudantes = new LinkedList<Estudante>();
 
   public String getCodigo() {
     return codigo;

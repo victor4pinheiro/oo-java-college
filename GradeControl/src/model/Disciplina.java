@@ -1,6 +1,8 @@
-package sistema;
+package model;
 
 public class Disciplina {
+  private float nota1, nota2;
+  private float media;
   private String codigo;
   private String nome;
   private String descricao;
@@ -72,5 +74,29 @@ public class Disciplina {
 
   public void setDocente(String docente) {
     this.docente = docente;
+  }
+
+  public float getNota1() {
+    return nota1;
+  }
+
+  public void setNota1(float nota1) {
+    this.nota1 = nota1;
+  }
+
+  public float getNota2() {
+    return nota2;
+  }
+
+  public void setNota2(float nota2) {
+    this.nota2 = nota2;
+  }
+
+  public float getMedia() {
+    return media;
+  }
+
+  public void setMedia() {
+    this.media = (this.nota1 + this.nota2 / 2);
   }
 }
