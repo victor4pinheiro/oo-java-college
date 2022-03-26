@@ -54,6 +54,7 @@ public class Estudante {
     for (Disciplina disciplina : disciplinas) {
       if (disciplina.equals(tmpDisciplina)) {
         disciplina.setNotas(notaBimestral, index);
+        return true;
       }
     }
     return false;
