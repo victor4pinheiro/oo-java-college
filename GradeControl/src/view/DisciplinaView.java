@@ -53,8 +53,6 @@ public class DisciplinaView {
       novaDisciplina = null;
       System.out.println("Disciplina já existente.");
     }
-
-    // sistema.atualizarDisciplinasEstudante(nomeCurso, novaDisciplina);
   }
 
   public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
