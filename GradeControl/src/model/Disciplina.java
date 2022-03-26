@@ -1,7 +1,7 @@
 package model;
 
 public class Disciplina {
-  private float notas[] = { 0 };
+  private float notas[] = { 0, 0 };
   private String codigo;
   private String nome;
   private String descricao;
