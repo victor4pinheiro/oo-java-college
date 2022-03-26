@@ -67,6 +67,29 @@ public class EstudanteView {
     System.out.println("Matrícula: " + tmpEstudante.getMatricula());
     System.out.println("Período: " + tmpEstudante.getPeriodo());
     System.out.println("Nome do curso: " + tmpEstudante.getCurso().getNome());
+    System.out.println("Quantidade de disciplinas: " + tmpEstudante.getDisciplinas().size());
+
+    if (tmpEstudante.getDisciplinas().isEmpty())
+      return;
+
+    System.out.println("Deseja listar as disciplinas do estudante? (S/n)");
+    String resposta = entrada.nextLine();
+
+    if (resposta == "n" || resposta == "N") {
+      System.out.println("Listagem finalizada.");
+      return;
+    }
+
+    System.out.println("Lista de disciplinas:");
+    for (Disciplina disciplina : tmpEstudante.getDisciplinas()) {
+      System.out.println("----------------------------");
+      System.out.println("Nome:" + disciplina.getNome());
+      System.out.println("Código:" + disciplina.getCodigo());
+      System.out.println("Turno:" + disciplina.getTurno());
+      System.out.println("Docente:" + disciplina.getDocente());
+      System.out.println("----------------------------");
+    }
+
   }
 
   public void definirNotaDisciplina(Scanner entrada, SistemaController sistema) {
@@ -115,7 +138,8 @@ public class EstudanteView {
 
     for (int i = 0; i < quantidadeNotas; i++) {
       System.out.println("Digite a nota " + i + ":");
-      if (!sistema.definirNotaDisciplina(tmpCurso, tmpEstudante, disciplina, entrada.nextFloat(), i)) {
+      float nota = entrada.nextFloat();
+      if (!sistema.definirNotaDisciplina(tmpCurso, tmpEstudante, disciplina, nota, i)) {
         System.out.println("Inserção não finalizada. Realizar novamente.");
         return;
       }
@@ -128,8 +152,7 @@ public class EstudanteView {
       if (resposta == "n") {
         System.out.println("Inserção de notas finalizada com sucesso.");
       }
+      System.out.println("Média semestral: " + sistema.obterNotaSemestral(tmpCurso, tmpEstudante, disciplina));
     }
-
-    System.out.println("Média semestral: " + sistema.obterNotaSemestral(tmpCurso, tmpEstudante, disciplina));
   }
 }
