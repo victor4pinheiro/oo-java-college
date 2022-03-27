@@ -11,9 +11,8 @@ import java.util.List;
  * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
- * 
  */
-  public class Curso {
+public class Curso {
   private String codigo;
   private String nome;
   private int duracao;
@@ -24,121 +23,123 @@ import java.util.List;
   public List<Estudante> estudantes = new LinkedList<Estudante>();
 
   /**
-     * Retorna o valor do codigo para poder ser usado em outros contextos
-     * 
-     * @return codigo do curso no atual objeto 
-     */
+   * Retorna o valor do codigo para poder ser usado em outros contextos
+   * 
+   * @return codigo do curso no atual objeto
+   */
   public String getCodigo() {
     return codigo;
   }
+
   /**
-     * Permite a adição de um valor ao codigo do curso.
-     *
-     * @param codigo Código do curso
-     * 
-     */
+   * Permite a adição de um valor ao codigo do curso.
+   *
+   * @param codigo Código do curso
+   */
   public void setCodigo(String codigo) {
     this.codigo = codigo;
   }
+
   /**
-     * Retorna o valor do nome para poder ser usado em outros contextos
-     * 
-     * @return nome do contato no atual objeto (no contexto do programa, na
-     *         atual posição da fila)
-     */
+   * Retorna o valor do nome para poder ser usado em outros contextos
+   * 
+   * @return nome do contato no atual objeto (no contexto do programa, na atual
+   *         posição da fila)
+   */
   public String getNome() {
     return nome;
   }
+
   /**
-     * Permite a adição de um valor ao nome do curso.
-     *
-     * @param nome Nome do curso
-     * 
-     */
+   * Permite a adição de um valor ao nome do curso.
+   *
+   * @param nome Nome do curso
+   */
   public void setNome(String nome) {
     this.nome = nome;
   }
+
   /**
-     * Retorna o valor do nome para poder ser usado em outros contextos
-     * 
-     * @return nome do contato no atual objeto (no contexto do programa, na
-     *         atual posição da fila)
-     */
+   * Retorna o valor do nome para poder ser usado em outros contextos
+   * 
+   * @return nome do contato no atual objeto (no contexto do programa, na
+   *         atual posição da fila)
+   */
   public int getDuracao() {
     return duracao;
   }
+
   /**
-     * Permite a adição de um valor a duração do curso.
-     *
-     * @param duracao Duração do curso
-     * 
-     */
+   * Permite a adição de um valor a duração do curso.
+   *
+   * @param duracao Duração do curso
+   */
   public void setDuracao(int duracao) {
     this.duracao = duracao;
   }
-    /**
-     * Retorna o valor do turno para poder ser usado em outros contextos
-     * 
-     * @return turno do curso no atual objeto 
-     *         
-     */  
+
+  /**
+   * Retorna o valor do turno para poder ser usado em outros contextos
+   * 
+   * @return turno do curso no atual objeto
+   */
   public String getTurno() {
     return turno;
   }
+
   /**
-     * Permite a adição de um valor ao turno do curso.
-     *
-     * @param turno Turno do curso
-     * 
-     */
+   * Permite a adição de um valor ao turno do curso.
+   *
+   * @param turno Turno do curso
+   */
   public void setTurno(String turno) {
     this.turno = turno;
   }
+
   /**
-     * Retorna o valor da modalidade para poder ser usado em outros contextos
-     * 
-     * @return a modalidade do curso no atual objeto.
-     *         
-     */
+   * Retorna o valor da modalidade para poder ser usado em outros contextos
+   * 
+   * @return a modalidade do curso no atual objeto.
+   */
   public String getModalidade() {
     return modalidade;
   }
+
   /**
-     * Permite a adição de um valor a modalidade do curso.
-     *
-     * @param modalidade Modalidade do curo
-     * 
-     */
+   * Permite a adição de um valor a modalidade do curso.
+   *
+   * @param modalidade Modalidade do curo
+   */
   public void setModalidade(String modalidade) {
     this.modalidade = modalidade;
   }
+
   /**
-     * Retorna o valor de graduação para poder ser usado em outros contextos
-     * 
-     * @return a graduação do curso no atual objeto.
-     */
+   * Retorna o valor de graduação para poder ser usado em outros contextos
+   * 
+   * @return a graduação do curso no atual objeto.
+   */
   public String getGraduacao() {
     return graduacao;
   }
+
   /**
-     * Permite a adição de um valor a graduação do curso.
-     *
-     * @param graduacao Graduação do curso
-     * 
-     */
+   * Permite a adição de um valor a graduação do curso.
+   *
+   * @param graduacao Graduação do curso
+   */
   public void setGraduacao(String graduacao) {
     this.graduacao = graduacao;
   }
- /**
-     * Método para adicionar disciplina ao curso, 
-     * somente se o curso existir.
-     * 
-     * @param novaDisciplina objeto referente a nova disciplina.
-     * 
-     * @return caso não exista, retorna falso, caso contrário,
-     *         retorna a nova disciplina adicionada.
-     *        
-     */ 
+
+  /**
+   * Método para adicionar disciplina ao curso,
+   * somente se o curso existir.
+   * 
+   * @param novaDisciplina objeto referente a nova disciplina.
+   * @return caso não exista, retorna falso, caso contrário,
+   *         retorna a nova disciplina adicionada.
+   */
 
   public boolean adicionarDisciplina(Disciplina novaDisciplina) {
     for (Disciplina disciplina : disciplinas) {

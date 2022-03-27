@@ -8,7 +8,7 @@ import model.Curso;
 import model.Disciplina;
 
 /**
- * Classe que adicionar uma nova disciplina, e listar 
+ * Classe que adicionar uma nova disciplina, e listar
  * as disciplinas presentes em um curso, e também por período.
  * 
  * 
@@ -16,7 +16,6 @@ import model.Disciplina;
  * 
  * @param entrada Leitura de dados
  * @param sistema objeto referenciando a classe SistemaController
- * @param nomeCurso Nome do Curso
  * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
@@ -30,54 +29,72 @@ public class DisciplinaView {
     entrada.nextLine();
     String nomeCurso = entrada.nextLine();
 
-    if (sistema.verificarCurso(nomeCurso) == null) {
+    Curso tmpCurso = sistema.verificarCurso(nomeCurso);
+
+    if (tmpCurso == null) {
       System.out.println("Curso não encontrado");
       return;
     }
 
-    System.out.println("Nome da disciplina:");
-    novaDisciplina.setNome(entrada.nextLine());
+    do {
+      System.out.println("Nome da disciplina:");
+      novaDisciplina.setNome(entrada.nextLine());
+    } while (novaDisciplina.getNome().isBlank() || sistema.isNumeric(novaDisciplina.getNome()));
 
-    System.out.println("Código da disciplina:");
-    novaDisciplina.setCodigo(entrada.next());
+    do {
+      System.out.println("Código da disciplina:");
+      novaDisciplina.setCodigo(entrada.next());
+    } while (novaDisciplina.getCodigo().isBlank());
 
-    System.out.println("Descrição da disciplina:");
-    entrada.nextLine();
-    novaDisciplina.setDescricao(entrada.nextLine());
+    do {
+      System.out.println("Descrição da disciplina:");
+      entrada.nextLine();
+      novaDisciplina.setDescricao(entrada.nextLine());
+    } while (novaDisciplina.getDescricao().isBlank() || sistema.isNumeric(novaDisciplina.getDescricao()));
 
-    System.out.println("Modalidade da disciplina:");
-    novaDisciplina.setModalidade(entrada.next());
+    do {
+      System.out.println("Modalidade da disciplina (presencial/EAD):");
+      novaDisciplina.setModalidade(entrada.next());
+    } while (novaDisciplina.getModalidade().isBlank() || sistema.isNumeric(novaDisciplina.getModalidade()));
 
-    System.out.println("Carga horária da disciplina:");
-    novaDisciplina.setCargaHoraria(entrada.nextFloat());
+    do {
+      System.out.println("Carga horária da disciplina (em horas):");
+      novaDisciplina.setCargaHoraria(entrada.nextFloat());
+    } while (novaDisciplina.getCargaHoraria() <= 0);
 
-    System.out.println("Período da disciplina:");
-    novaDisciplina.setPeriodo(entrada.nextInt());
+    do {
+      System.out.println("Período da disciplina:");
+      novaDisciplina.setPeriodo(entrada.nextInt());
+    } while (novaDisciplina.getPeriodo() <= 0 || novaDisciplina.getPeriodo() > tmpCurso.getDuracao());
 
-    System.out.println("Docente da disciplina:");
-    entrada.nextLine();
-    novaDisciplina.setDocente(entrada.nextLine());
+    do {
+      System.out.println("Docente da disciplina:");
+      entrada.nextLine();
+      novaDisciplina.setDocente(entrada.nextLine());
+    } while (novaDisciplina.getDocente().isBlank() || sistema.isNumeric(novaDisciplina.getDocente()));
 
-    System.out.println("Turno da disciplina:");
-    novaDisciplina.setTurno(entrada.next());
+    do {
+      System.out.println("Turno da disciplina (matutino, vespertino e noturno):");
+      novaDisciplina.setTurno(entrada.next());
+    } while (novaDisciplina.getTurno().isBlank() || sistema.isNumeric(novaDisciplina.getTurno()));
 
     if (!sistema.adicionarDisciplina(nomeCurso, novaDisciplina)) {
       novaDisciplina = null;
       System.out.println("Disciplina já existente.");
     }
+    return;
   }
-   /**
-     * Método que verifica se o curso existe, se está vazio e
-     * lista todas as disciplinas do curso.
-     * 
-     * @param entrada Leitura de dados
-     * @param sistema Objeto referenciando a classe SistemaController
-     * @param nomeCurso Nome do Curso
-     * 
-     * @return caso não exista curso, retorna "Curso não existente".
-     *         caso não exista disciplina,retorna "Curso sem disciplina".
-     *         
-     */ 
+
+  /**
+   * Método que verifica se o curso existe, se está vazio e
+   * lista todas as disciplinas do curso.
+   * 
+   * @param entrada Leitura de dados
+   * @param sistema Objeto referenciando a classe SistemaController
+   * 
+   * @return caso não exista curso, retorna "Curso não existente".
+   *         caso não exista disciplina,retorna "Curso sem disciplina".
+   */
   public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
@@ -111,19 +128,18 @@ public class DisciplinaView {
       System.out.println("----------------------------");
     }
   }
-   /**
-     * Método que verifica se o curso existe, se possui disciplinas no período
-     * especificado e lista as disciplinas por período.
-     *
-     * @param entrada   Leitura de dados
-     * @param sistema   Objeto referenciando a classe SistemaController
-     * @param nomeCurso Nome do Curso
-     * 
-     * 
-     * @return caso não exista curso, retorna "Curso não existente".
-     *         caso não exista disciplina,retorna "Curso sem disciplinas no respecitivo período."
-     *        
-     */ 
+
+  /**
+   * Método que verifica se o curso existe, se possui disciplinas no período
+   * especificado e lista as disciplinas por período.
+   *
+   * @param entrada Leitura de dados
+   * @param sistema Objeto referenciando a classe SistemaController
+   * 
+   * @return caso não exista curso, retorna "Curso não existente".
+   *         caso não exista disciplina,retorna "Curso sem disciplinas no
+   *         respecitivo período."
+   */
   public void listarDisciplinasPorPeriodo(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();

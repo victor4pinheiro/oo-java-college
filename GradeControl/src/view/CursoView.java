@@ -12,36 +12,50 @@ import model.Curso;
  * 
  * CursoView
  * 
- * @param entrada Leitura de dados
- * @param sistema Objeto referenciando a classe SistemaController
- * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
- * 
  */
 public class CursoView {
+  /**
+   * Adiciona o curso a lista de curso caso não exista o curso
+   * 
+   * @param entrada Leitura de daddos
+   * @param sistema Objeto referenciando a classe SistemaController
+   */
   public void adicionarCurso(Scanner entrada, SistemaController sistema) {
     Curso novoCurso = new Curso();
 
-    System.out.println("Código do curso:");
-    novoCurso.setCodigo(entrada.next());
+    do {
+      System.out.println("Código do curso:");
+      novoCurso.setCodigo(entrada.next());
+    } while (novoCurso.getCodigo().isBlank());
 
-    System.out.println("Nome do curso:");
-    entrada.nextLine();
-    novoCurso.setNome(entrada.nextLine());
+    do {
+      System.out.println("Nome do curso:");
+      entrada.nextLine();
+      novoCurso.setNome(entrada.nextLine());
+    } while (novoCurso.getNome().isBlank() || sistema.isNumeric(novoCurso.getNome()));
 
-    System.out.println("Duração (em semestres/periodos):");
-    novoCurso.setDuracao(entrada.nextInt());
+    do {
+      System.out.println("Duração (em semestres/periodos):");
+      novoCurso.setDuracao(entrada.nextInt());
+    } while (novoCurso.getDuracao() <= 0 || novoCurso.getDuracao() > 20);
 
-    System.out.println("Turno do curso:");
-    novoCurso.setTurno(entrada.next());
+    do {
+      System.out.println("Turno do curso (matutino, vespertino, noturno):");
+      novoCurso.setTurno(entrada.next());
+    } while (novoCurso.getTurno().isBlank() || sistema.isNumeric(novoCurso.getTurno()));
 
-    System.out.println("Modalidade do curso:");
-    novoCurso.setModalidade(entrada.next());
+    do {
+      System.out.println("Modalidade do curso (presencial/EAD):");
+      novoCurso.setModalidade(entrada.next());
+    } while (novoCurso.getModalidade().isBlank() || sistema.isNumeric(novoCurso.getModalidade()));
 
-    System.out.println("Tipo de graduação do curso:");
-    System.out.println("Ex.: Bacharelado, Licenciatura, Pós, Especialização, Mestrado, Doutorado, Pós-doc");
-    novoCurso.setGraduacao(entrada.next());
+    do {
+      System.out.println("Tipo de graduação do curso:");
+      System.out.println("Ex.: Graduação, Pós, Especialização, Mestrado, Doutorado, Pós-doc");
+      novoCurso.setGraduacao(entrada.next());
+    } while (novoCurso.getGraduacao().isBlank() || sistema.isNumeric(novoCurso.getGraduacao()));
 
     if (!sistema.adicionarCurso(novoCurso)) {
       novoCurso = null;
@@ -52,12 +66,12 @@ public class CursoView {
 
     System.out.println("Curso adicionado com sucesso");
   }
-   /**
-     * Método que apresenta os cursos listados ao usuário.
-     * 
-     * @param sistema Objeto referenciando a classe SistemaController.
-     * 
-     */ 
+
+  /**
+   * Método que apresenta os cursos listados ao usuário.
+   * 
+   * @param sistema Objeto referenciando a classe SistemaController.
+   */
   public void listarCurso(SistemaController sistema) {
     List<Curso> tmpCursos = sistema.listarCurso();
     for (Curso curso : tmpCursos) {

@@ -9,23 +9,23 @@ import model.Disciplina;
 import model.Estudante;
 
 /**
- * Classe que permite a adição de um novo estudante, e 
+ * Classe que permite a adição de um novo estudante, e
  * o insere na lista de disciplinas do cursos, além de listar os dados.
  * 
  * 
  * CursoView
  * 
- * @param entrada   Leitura de dados
- * @param sistema   Objeto referenciando a classe SistemaController
- * @param nomeCurso Nome do Curso
- * @param estudante Objeto referenciando a classe Estudante
- * @param tmpCurso  Objeto temporário
- * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
- * 
  */
 public class EstudanteView {
+  /**
+   * Adiciona o estudante a lista de estudantes caso exista o curso com matrícula
+   * e período pré-definidos
+   * 
+   * @param entrada Leitura de daddos
+   * @param sistema Objeto referenciando a classe SistemaController
+   */
   public void adicionarEstudante(Scanner entrada, SistemaController sistema) {
     Estudante estudante = new Estudante();
     System.out.println("Nome do curso:");
@@ -38,8 +38,11 @@ public class EstudanteView {
       return;
     }
 
-    System.out.println("Nome do estudante:");
-    estudante.setNome(entrada.nextLine());
+    do {
+      System.out.println("Nome do estudante:");
+      estudante.setNome(entrada.nextLine());
+    } while (estudante.getNome().isBlank() || sistema.isNumeric(estudante.getNome()));
+
     Random random = new Random();
     estudante.setMatricula(random.nextInt());
     estudante.setPeriodo(1);
@@ -54,23 +57,16 @@ public class EstudanteView {
 
     System.out.println("Cadastro realizado com sucesso.");
   }
-   /**
-     * Método que verifica a existência de um curso ,e caso exista
-     * insere um estudante, caso ele exista.
-     * Permite também, a listagem dos estudantes por disciplina, e a quantas
-     * o aluno pertence.
-     * 
-     * @param entrada       Leitura de dados
-     * @param sistema       Objeto referenciando a classe SistemaController
-     * @param nomeCurso     Nome do curso
-     * @param tmpCurso      Objeto temporário
-     * @param nomeEstudante Nome do estudante
-     * 
-     * @return caso não exista curso, retorna "Curso não existente".
-     *         caso não exista estudante, retorna "Estudante não exsite".
-     *        
-     */ 
 
+  /**
+   * Método que verifica a existência de um curso ,e caso exista
+   * insere um estudante, caso ele exista.
+   * Permite também, a listagem dos estudantes por disciplina, e a quantas
+   * o aluno pertence.
+   * 
+   * @param entrada Leitura de dados
+   * @param sistema Objeto referenciando a classe SistemaController
+   */
   public void listarDadosEstudante(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
     entrada.nextLine();
@@ -109,38 +105,34 @@ public class EstudanteView {
       System.out.println("Listagem finalizada.");
       return;
     }
-     /**
-     * Método que apresenta a lista de disciplinas ao usuário.
-     *         
-     *        
-     */ 
+
     System.out.println("Lista de disciplinas:");
     for (Disciplina disciplina : tmpEstudante.getDisciplinas()) {
       System.out.println("----------------------------");
-      System.out.println("Nome:" + disciplina.getNome());
-      System.out.println("Código:" + disciplina.getCodigo());
-      System.out.println("Turno:" + disciplina.getTurno());
-      System.out.println("Docente:" + disciplina.getDocente());
+      System.out.println("Nome: " + disciplina.getNome());
+      System.out.println("Código: " + disciplina.getCodigo());
+      System.out.println("Turno: " + disciplina.getTurno());
+      System.out.println("Docente: " + disciplina.getDocente());
+
+      for (int i = 0; i < 2; i++) {
+        if (disciplina.getNotas()[i] != -1) {
+          System.out.println("Nota bimestral " + i + ": " + disciplina.getNotas()[i]);
+          continue;
+        }
+        System.out.println("Nota bimestral " + i + ": não existente");
+      }
       System.out.println("----------------------------");
     }
 
   }
-    /**
-     * Método que verifica a existência do curso e do estudante, e caso
-     * existam, permite a adição de notas.
-     *         
-     * @param entrada         Leitura de dados
-     * @param sistema         Objeto referenciando a classe SistemaController
-     * @param nomeCurso       Nome do curso
-     * @param nomeEstudante   Nome do estudante
-     * @param tmpCurso        Objeto temporário
-     * @param nomeDisciplina  Nome da disciplina
-     * @param disciplina      Objeto referenciando a classe disciplina
-     * @param nota            Nota da disciplina
-     * 
-     * @return a média semestral do estudante.
-     *        
-     */ 
+
+  /**
+   * Método que verifica a existência do curso e do estudante, e caso
+   * existam, permite a adição de notas.
+   * 
+   * @param entrada Leitura de dados
+   * @param sistema Objeto referenciando a classe SistemaController
+   */
   public void definirNotaDisciplina(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
     entrada.nextLine();
@@ -185,9 +177,29 @@ public class EstudanteView {
       return;
     }
 
+    float nota = 0;
+
+    if (quantidadeNotas == 1) {
+      int semestre = 0;
+      do {
+        System.out.println("Em qual bimestre deseja definir nota? (1 ou 2)");
+        semestre = entrada.nextInt();
+      } while (semestre <= 0 || semestre > 2);
+
+      System.out.println("Digite a nota:");
+      nota = entrada.nextFloat();
+
+      if (!sistema.definirNotaDisciplina(tmpCurso, tmpEstudante, disciplina, nota, semestre)) {
+        System.out.println("Inserção não finalizada. Realizar novamente.");
+        return;
+      }
+      System.out.println("Nota definida!");
+      return;
+    }
+
     for (int i = 0; i < quantidadeNotas; i++) {
-      System.out.println("Digite a nota " + i + ":");
-      float nota = entrada.nextFloat();
+      System.out.println("Digite a nota " + (i + 1) + ":");
+      nota = entrada.nextFloat();
       if (!sistema.definirNotaDisciplina(tmpCurso, tmpEstudante, disciplina, nota, i)) {
         System.out.println("Inserção não finalizada. Realizar novamente.");
         return;
