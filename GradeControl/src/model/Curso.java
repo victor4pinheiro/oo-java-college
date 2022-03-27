@@ -3,6 +3,9 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
+ /**
+ * Classe que permite a adição de cursos, de disciplinas e da lista de suas informações.
+ */
 public class Curso {
   private String codigo;
   private String nome;

@@ -6,6 +6,9 @@ import java.util.Scanner;
 import controller.SistemaController;
 import model.Curso;
 
+/**
+ * Confere a existência do curso, e o adiciona.
+ */
 public class CursoView {
   public void adicionarCurso(Scanner entrada, SistemaController sistema) {
     Curso novoCurso = new Curso();
@@ -39,7 +42,9 @@ public class CursoView {
 
     System.out.println("Curso adicionado com sucesso");
   }
-
+  /**
+ * Lista os cursos adicionados
+ */
   public void listarCurso(SistemaController sistema) {
     List<Curso> tmpCursos = sistema.listarCurso();
     for (Curso curso : tmpCursos) {

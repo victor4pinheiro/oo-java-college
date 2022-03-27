@@ -8,7 +8,7 @@ import model.Curso;
 import model.Disciplina;
 
 /**
- * DisciplinaView
+ * Verifica se a disciplina existe, e o adiciona.
  */
 public class DisciplinaView {
   public void adicionarDisciplina(Scanner entrada, SistemaController sistema) {
@@ -54,7 +54,9 @@ public class DisciplinaView {
       System.out.println("Disciplina já existente.");
     }
   }
-
+  /**
+ * Lista todas as disciplinas ofertadas.
+ */
   public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
@@ -88,7 +90,9 @@ public class DisciplinaView {
       System.out.println("----------------------------");
     }
   }
-
+/**
+ * Lista as disciplinas de acordo com o curso pertencente.
+ */
   public void listarDisciplinasPorPeriodo(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
@@ -112,7 +116,9 @@ public class DisciplinaView {
       System.out.println("Curso sem disciplinas no respectivo período.");
       return;
     }
-
+/**
+ * Mostra os dados da disciplina.
+ */
     for (Disciplina disciplina : disciplinasPeriodo) {
       System.out.println("----------------------------");
       System.out.println("Código:" + disciplina.getCodigo());

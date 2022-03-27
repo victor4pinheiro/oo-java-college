@@ -2,11 +2,13 @@ package controller;
 
 import java.util.LinkedList;
 import java.util.List;
-
 import model.Curso;
 import model.Disciplina;
 import model.Estudante;
 
+ /**
+ * Classe que permite o gerenciamento do sistema, permitindo adição de cursos, disciplinas, estudantes e seus dados.
+ */
 public class SistemaController {
   List<Curso> cursos = new LinkedList<Curso>();
 

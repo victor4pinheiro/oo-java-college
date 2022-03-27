@@ -9,7 +9,7 @@ import model.Disciplina;
 import model.Estudante;
 
 /**
- * EstudanteView
+ * Verifica se o curso existe e adiciona o estudante.
  */
 public class EstudanteView {
   public void adicionarEstudante(Scanner entrada, SistemaController sistema) {
@@ -40,6 +40,9 @@ public class EstudanteView {
 
     System.out.println("Cadastro realizado com sucesso.");
   }
+  /**
+ * Lista os dados do estudante.
+ */
 
   public void listarDadosEstudante(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
@@ -79,7 +82,9 @@ public class EstudanteView {
       System.out.println("Listagem finalizada.");
       return;
     }
-
+     /**
+     * Lista os dados da discplina.
+     */
     System.out.println("Lista de disciplinas:");
     for (Disciplina disciplina : tmpEstudante.getDisciplinas()) {
       System.out.println("----------------------------");
@@ -91,7 +96,9 @@ public class EstudanteView {
     }
 
   }
-
+   /**
+ * Verifica se o curso e o estudante existe, e permite inserir a nota para o esutdante.
+ */
   public void definirNotaDisciplina(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
     entrada.nextLine();

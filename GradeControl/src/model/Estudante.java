@@ -2,7 +2,9 @@ package model;
 
 import java.util.LinkedList;
 import java.util.List;
-
+ /**
+ * Classe para permitir listar e definir notas para o estudante.
+ */
 public class Estudante {
   private String nome;
   private int matricula;
@@ -49,7 +51,9 @@ public class Estudante {
   public void setDisciplinas(List<Disciplina> disciplinas) {
     this.disciplinas = disciplinas;
   }
-
+   /**
+ * 
+ */
   public boolean definirNotaDisciplina(Disciplina tmpDisciplina, Float notaBimestral, int index) {
     for (Disciplina disciplina : disciplinas) {
       if (disciplina.equals(tmpDisciplina)) {

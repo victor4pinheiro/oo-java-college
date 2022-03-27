@@ -4,8 +4,10 @@ import controller.SistemaController;
 import view.CursoView;
 import view.DisciplinaView;
 import view.EstudanteView;
-
-public class App {
+ /**
+ * Interação gráfica com o usuário.
+ */
+public class Main {
   public static void main(String[] args) {
     SistemaController sistema = new SistemaController();
     CursoView curso = new CursoView();

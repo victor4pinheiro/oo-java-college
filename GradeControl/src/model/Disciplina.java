@@ -1,5 +1,8 @@
 package model;
 
+ /**
+ * Classe que permite a adição de disciplina.
+ */
 public class Disciplina {
   private float notas[] = { 0, 0 };
   private String codigo;
