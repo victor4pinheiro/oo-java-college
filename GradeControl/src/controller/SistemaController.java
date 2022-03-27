@@ -21,7 +21,9 @@ public class SistemaController {
     }
     return this.cursos.add(novoCurso);
   }
-
+/**
+ * Verifica se o curso existe, e retorna nulo caso não exista.
+ */
   public Curso verificarCurso(String nomeCurso) {
     for (Curso curso : cursos) {
       if (curso.getNome().equals(nomeCurso))
