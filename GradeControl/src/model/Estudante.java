@@ -6,9 +6,6 @@ import java.util.List;
  * Classe que permite a adição de estudante, e listá-lo 
  * nas disciplinas pertencentes.
  * 
- *
- * 
- * 
  * Curso
  * 
  * @author Victor Gabriel Alves Pereira
@@ -32,6 +29,8 @@ public class Estudante {
    /**
      * Permite a adição de um valor ao nome do estudante.
      *
+     * @param nome Nome do estudante
+     * 
      */
   public void setNome(String nome) {
     this.nome = nome;
@@ -47,6 +46,8 @@ public class Estudante {
    /**
      * Permite a adição de um valor a matrícula do estudante.
      *
+     * @param matricula Matrícula do estudante.
+     * 
      */
   public void setMatricula(int matricula) {
     this.matricula = matricula;
@@ -62,6 +63,8 @@ public class Estudante {
    /**
      * Permite a adição de um valor ao curso do estudante.
      *
+     * @param curso Curso da disciplina
+     * 
      */
   public void setCurso(Curso curso) {
     this.curso = curso;
@@ -77,6 +80,8 @@ public class Estudante {
     /**
      * Permite a adição de um valor ao período do estudante.
      *
+     * @param periodo Período da disciplina
+     * 
      */
   public void setPeriodo(int periodo) {
     this.periodo = periodo;
@@ -92,6 +97,8 @@ public class Estudante {
    /**
      * Permite a adição de um valor a lista de disciplinas.
      *
+     * @param disciplinas Lista das disciplinas
+     * 
      */
   public void setDisciplinas(List<Disciplina> disciplinas) {
     this.disciplinas = disciplinas;
@@ -100,7 +107,10 @@ public class Estudante {
      * Método que verifica se a disciplina existe
      * e adiciona as notas bimestrais do estudante.
      * 
-     *
+     *@param tmpDisciplina objeto temporário
+     *@param notaBimestral Nota bimestral do estudante
+     *@param index         Média da nota do estudante
+     
      * @return caso não exista disciplina, retorna falso
      *         caso contrário, retorna as notas.
      *         

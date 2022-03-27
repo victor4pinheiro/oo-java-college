@@ -10,10 +10,10 @@ import model.Curso;
  * Classe que permite a adição de um novo curso, desde que ainda não exista
  * e lista os cursos já adicionados.
  * 
- *
- * 
- * 
  * CursoView
+ * 
+ * @param entrada Leitura de dados
+ * @param sistema Objeto referenciando a classe SistemaController
  * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
@@ -55,7 +55,8 @@ public class CursoView {
    /**
      * Método que apresenta os cursos listados ao usuário.
      * 
-     *         
+     * @param sistema Objeto referenciando a classe SistemaController.
+     * 
      */ 
   public void listarCurso(SistemaController sistema) {
     List<Curso> tmpCursos = sistema.listarCurso();

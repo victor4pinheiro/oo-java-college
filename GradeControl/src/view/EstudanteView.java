@@ -15,6 +15,12 @@ import model.Estudante;
  * 
  * CursoView
  * 
+ * @param entrada   Leitura de dados
+ * @param sistema   Objeto referenciando a classe SistemaController
+ * @param nomeCurso Nome do Curso
+ * @param estudante Objeto referenciando a classe Estudante
+ * @param tmpCurso  Objeto temporário
+ * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
  * 
@@ -53,6 +59,12 @@ public class EstudanteView {
      * insere um estudante, caso ele exista.
      * Permite também, a listagem dos estudantes por disciplina, e a quantas
      * o aluno pertence.
+     * 
+     * @param entrada       Leitura de dados
+     * @param sistema       Objeto referenciando a classe SistemaController
+     * @param nomeCurso     Nome do curso
+     * @param tmpCurso      Objeto temporário
+     * @param nomeEstudante Nome do estudante
      * 
      * @return caso não exista curso, retorna "Curso não existente".
      *         caso não exista estudante, retorna "Estudante não exsite".
@@ -117,6 +129,14 @@ public class EstudanteView {
      * Método que verifica a existência do curso e do estudante, e caso
      * existam, permite a adição de notas.
      *         
+     * @param entrada         Leitura de dados
+     * @param sistema         Objeto referenciando a classe SistemaController
+     * @param nomeCurso       Nome do curso
+     * @param nomeEstudante   Nome do estudante
+     * @param tmpCurso        Objeto temporário
+     * @param nomeDisciplina  Nome da disciplina
+     * @param disciplina      Objeto referenciando a classe disciplina
+     * @param nota            Nota da disciplina
      * 
      * @return a média semestral do estudante.
      *        

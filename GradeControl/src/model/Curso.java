@@ -7,8 +7,6 @@ import java.util.List;
  * Classe que permite a adição de um curso, além de adicionar
  * e listar disicplinas e estudantes pertencentes a ele.
  *
- * 
- * 
  * Curso
  * 
  * @author Victor Gabriel Alves Pereira
@@ -33,7 +31,12 @@ import java.util.List;
   public String getCodigo() {
     return codigo;
   }
-  
+  /**
+     * Permite a adição de um valor ao codigo do curso.
+     *
+     * @param codigo Código do curso
+     * 
+     */
   public void setCodigo(String codigo) {
     this.codigo = codigo;
   }
@@ -47,8 +50,10 @@ import java.util.List;
     return nome;
   }
   /**
-     * Permite a adição de um valor ao noem do curso.
+     * Permite a adição de um valor ao nome do curso.
      *
+     * @param nome Nome do curso
+     * 
      */
   public void setNome(String nome) {
     this.nome = nome;
@@ -65,6 +70,8 @@ import java.util.List;
   /**
      * Permite a adição de um valor a duração do curso.
      *
+     * @param duracao Duração do curso
+     * 
      */
   public void setDuracao(int duracao) {
     this.duracao = duracao;
@@ -81,6 +88,8 @@ import java.util.List;
   /**
      * Permite a adição de um valor ao turno do curso.
      *
+     * @param turno Turno do curso
+     * 
      */
   public void setTurno(String turno) {
     this.turno = turno;
@@ -97,6 +106,8 @@ import java.util.List;
   /**
      * Permite a adição de um valor a modalidade do curso.
      *
+     * @param modalidade Modalidade do curo
+     * 
      */
   public void setModalidade(String modalidade) {
     this.modalidade = modalidade;
@@ -112,6 +123,8 @@ import java.util.List;
   /**
      * Permite a adição de um valor a graduação do curso.
      *
+     * @param graduacao Graduação do curso
+     * 
      */
   public void setGraduacao(String graduacao) {
     this.graduacao = graduacao;
@@ -120,11 +133,11 @@ import java.util.List;
      * Método para adicionar disciplina ao curso, 
      * somente se o curso existir.
      * 
+     * @param novaDisciplina objeto referente a nova disciplina.
      * 
      * @return caso não exista, retorna falso, caso contrário,
      *         retorna a nova disciplina adicionada.
      *        
-     *  
      */ 
 
   public boolean adicionarDisciplina(Disciplina novaDisciplina) {

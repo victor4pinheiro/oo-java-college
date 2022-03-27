@@ -3,9 +3,7 @@ package model;
  /**
  * Classe que permite adicionar uma disciplina, e retornar 
  * sua nota semestral.
- * 
- * 
- * 
+ *
  * Curso
  * 
  * @author Victor Gabriel Alves Pereira
@@ -31,7 +29,12 @@ public class Disciplina {
   public String getCodigo() {
     return codigo;
   }
-
+   /**
+     * Permite a adição de um valor ao codigo da disciplina.
+     *
+     * @param codigo Codigo da disciplina
+     * 
+     */
   public void setCodigo(String codigo) {
     this.codigo = codigo;
   }
@@ -43,7 +46,12 @@ public class Disciplina {
   public String getNome() {
     return nome;
   }
-
+   /**
+     * Permite a adição de um valor ao nome da disciplina.
+     *
+     * @param nome Nome da disciplina
+     * 
+     */
   public void setNome(String nome) {
     this.nome = nome;
   }
@@ -58,6 +66,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor a descricao da disciplina.
      *
+     * @param descricao Descrição da disciplina
+     * 
      */
   public void setDescricao(String descricao) {
     this.descricao = descricao;
@@ -73,6 +83,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor ao turno da disciplina.
      *
+     * @param turno Turno da disciplina
+     * 
      */
   public void setTurno(String turno) {
     this.turno = turno;
@@ -88,6 +100,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor a cargaHoraria da disciplina.
      *
+     * @param cargaHoraria Carga horária da disciplina.
+     * 
      */
   public void setCargaHoraria(float cargaHoraria) {
     this.cargaHoraria = cargaHoraria;
@@ -103,6 +117,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor ao período da disciplina.
      *
+     * @param periodo Periodo da disciplina.
+     * 
      */
   public void setPeriodo(int periodo) {
     this.periodo = periodo;
@@ -118,6 +134,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor a modalidade da disciplina.
      *
+     * @param modalidade Modalidade da disciplina
+     * 
      */
   public void setModalidade(String modalidade) {
     this.modalidade = modalidade;
@@ -133,6 +151,8 @@ public class Disciplina {
   /**
      * Permite a adição de um valor ao docente da disciplina.
      *
+     * @param docente Docente da disciplina
+     * 
      */
   public void setDocente(String docente) {
     this.docente = docente;
@@ -148,6 +168,9 @@ public class Disciplina {
   /**
      * Permite a adição de um valor as notas da disciplina.
      *
+     * @param nota Nota da disciplina
+     * @param index Média da disciplina
+     * 
      */
   public void setNotas(float nota, int index) {
     this.notas[index] = nota;

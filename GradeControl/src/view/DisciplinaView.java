@@ -14,6 +14,10 @@ import model.Disciplina;
  * 
  * DisciplinaView
  * 
+ * @param entrada Leitura de dados
+ * @param sistema objeto referenciando a classe SistemaController
+ * @param nomeCurso Nome do Curso
+ * 
  * @author Victor Gabriel Alves Pereira
  * @author Victor Matheus Carvalho Pinheiro
  * 
@@ -66,11 +70,13 @@ public class DisciplinaView {
      * Método que verifica se o curso existe, se está vazio e
      * lista todas as disciplinas do curso.
      * 
+     * @param entrada Leitura de dados
+     * @param sistema Objeto referenciando a classe SistemaController
+     * @param nomeCurso Nome do Curso
      * 
      * @return caso não exista curso, retorna "Curso não existente".
      *         caso não exista disciplina,retorna "Curso sem disciplina".
      *         
-     *
      */ 
   public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
@@ -109,6 +115,10 @@ public class DisciplinaView {
      * Método que verifica se o curso existe, se possui disciplinas no período
      * especificado e lista as disciplinas por período.
      *
+     * @param entrada   Leitura de dados
+     * @param sistema   Objeto referenciando a classe SistemaController
+     * @param nomeCurso Nome do Curso
+     * 
      * 
      * @return caso não exista curso, retorna "Curso não existente".
      *         caso não exista disciplina,retorna "Curso sem disciplinas no respecitivo período."
