@@ -8,7 +8,15 @@ import model.Curso;
 import model.Disciplina;
 
 /**
- * Verifica se a disciplina existe, e o adiciona.
+ * Classe que adicionar uma nova disciplina, e listar 
+ * as disciplinas presentes em um curso, e também por período.
+ * 
+ * 
+ * DisciplinaView
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class DisciplinaView {
   public void adicionarDisciplina(Scanner entrada, SistemaController sistema) {
@@ -54,9 +62,16 @@ public class DisciplinaView {
       System.out.println("Disciplina já existente.");
     }
   }
-  /**
- * Lista todas as disciplinas ofertadas.
- */
+   /**
+     * Método que verifica se o curso existe, se está vazio e
+     * lista todas as disciplinas do curso.
+     * 
+     * 
+     * @return caso não exista curso, retorna "Curso não existente".
+     *         caso não exista disciplina,retorna "Curso sem disciplina".
+     *         
+     *
+     */ 
   public void listarTodasDisciplinas(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
@@ -90,9 +105,15 @@ public class DisciplinaView {
       System.out.println("----------------------------");
     }
   }
-/**
- * Lista as disciplinas de acordo com o curso pertencente.
- */
+   /**
+     * Método que verifica se o curso existe, se possui disciplinas no período
+     * especificado e lista as disciplinas por período.
+     *
+     * 
+     * @return caso não exista curso, retorna "Curso não existente".
+     *         caso não exista disciplina,retorna "Curso sem disciplinas no respecitivo período."
+     *        
+     */ 
   public void listarDisciplinasPorPeriodo(Scanner entrada, SistemaController sistema) {
     System.out.println("Nome do curso:");
     entrada.nextLine();
@@ -116,9 +137,6 @@ public class DisciplinaView {
       System.out.println("Curso sem disciplinas no respectivo período.");
       return;
     }
-/**
- * Mostra os dados da disciplina.
- */
     for (Disciplina disciplina : disciplinasPeriodo) {
       System.out.println("----------------------------");
       System.out.println("Código:" + disciplina.getCodigo());

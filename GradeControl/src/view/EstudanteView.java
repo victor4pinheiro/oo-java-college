@@ -9,7 +9,15 @@ import model.Disciplina;
 import model.Estudante;
 
 /**
- * Verifica se o curso existe e adiciona o estudante.
+ * Classe que permite a adição de um novo estudante, e 
+ * o insere na lista de disciplinas do cursos, além de listar os dados.
+ * 
+ * 
+ * CursoView
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class EstudanteView {
   public void adicionarEstudante(Scanner entrada, SistemaController sistema) {
@@ -40,9 +48,16 @@ public class EstudanteView {
 
     System.out.println("Cadastro realizado com sucesso.");
   }
-  /**
- * Lista os dados do estudante.
- */
+   /**
+     * Método que verifica a existência de um curso ,e caso exista
+     * insere um estudante, caso ele exista.
+     * Permite também, a listagem dos estudantes por disciplina, e a quantas
+     * o aluno pertence.
+     * 
+     * @return caso não exista curso, retorna "Curso não existente".
+     *         caso não exista estudante, retorna "Estudante não exsite".
+     *        
+     */ 
 
   public void listarDadosEstudante(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
@@ -83,8 +98,10 @@ public class EstudanteView {
       return;
     }
      /**
-     * Lista os dados da discplina.
-     */
+     * Método que apresenta a lista de disciplinas ao usuário.
+     *         
+     *        
+     */ 
     System.out.println("Lista de disciplinas:");
     for (Disciplina disciplina : tmpEstudante.getDisciplinas()) {
       System.out.println("----------------------------");
@@ -96,9 +113,14 @@ public class EstudanteView {
     }
 
   }
-   /**
- * Verifica se o curso e o estudante existe, e permite inserir a nota para o esutdante.
- */
+    /**
+     * Método que verifica a existência do curso e do estudante, e caso
+     * existam, permite a adição de notas.
+     *         
+     * 
+     * @return a média semestral do estudante.
+     *        
+     */ 
   public void definirNotaDisciplina(Scanner entrada, SistemaController sistema) {
     System.out.println("Digite o nome do curso do estudante:");
     entrada.nextLine();

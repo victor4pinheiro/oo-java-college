@@ -7,7 +7,17 @@ import controller.SistemaController;
 import model.Curso;
 
 /**
- * Confere a existência do curso, e o adiciona.
+ * Classe que permite a adição de um novo curso, desde que ainda não exista
+ * e lista os cursos já adicionados.
+ * 
+ *
+ * 
+ * 
+ * CursoView
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class CursoView {
   public void adicionarCurso(Scanner entrada, SistemaController sistema) {
@@ -42,9 +52,11 @@ public class CursoView {
 
     System.out.println("Curso adicionado com sucesso");
   }
-  /**
- * Lista os cursos adicionados
- */
+   /**
+     * Método que apresenta os cursos listados ao usuário.
+     * 
+     *         
+     */ 
   public void listarCurso(SistemaController sistema) {
     List<Curso> tmpCursos = sistema.listarCurso();
     for (Curso curso : tmpCursos) {

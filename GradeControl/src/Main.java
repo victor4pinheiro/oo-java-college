@@ -5,7 +5,14 @@ import view.CursoView;
 import view.DisciplinaView;
 import view.EstudanteView;
  /**
- * Interação gráfica com o usuário.
+ * Permite que o usuário interaja, via linha de comando, com o programa,
+ * permitindo adicionar nota, curso, disciplina, estudante e listá-los respectivamente.
+ * 
+ * Main
+ * 
+ * @author Victor Gabriel Alves Pereira
+ * @author Victor Matheus Carvalho Pinheiro
+ * 
  */
 public class Main {
   public static void main(String[] args) {
@@ -13,8 +20,9 @@ public class Main {
     CursoView curso = new CursoView();
     DisciplinaView disciplina = new DisciplinaView();
     EstudanteView estudante = new EstudanteView();
-
+     /** Estrutura de repetição while contendo as opções */
     while (true) {
+      /** Declaração da classe Scanner para entrada de dados */
       Scanner entrada = new Scanner(System.in);
       System.out.println("1 - Adicionar curso ao sistema");
       System.out.println("2 - Mostrar os cursos ofertados");
@@ -25,38 +33,38 @@ public class Main {
       System.out.println("7 - Listar dados do estudante");
       System.out.println("8 - Definir a nota do estudante");
       int option = entrada.nextInt();
-
+     /** Estrutura de condição para o usuário efetuar a opção escolhida, ou sair. */
       switch (option) {
-        case 1:
+        case 1://Adicionar curso
           curso.adicionarCurso(entrada, sistema);
           break;
-        case 2:
+        case 2://Listar curso
           curso.listarCurso(sistema);
           break;
-        case 3:
+        case 3://Adicionar disciplina
           disciplina.adicionarDisciplina(entrada, sistema);
           break;
-        case 4:
+        case 4://Listar tidas as disciplinas.
           disciplina.listarTodasDisciplinas(entrada, sistema);
           break;
-        case 5:
+        case 5://listar disciplinas por período.
           disciplina.listarDisciplinasPorPeriodo(entrada, sistema);
           break;
-        case 6:
+        case 6://Adicionar estudante
           estudante.adicionarEstudante(entrada, sistema);
           break;
-        case 7:
+        case 7://Listar dados do estudante
           estudante.listarDadosEstudante(entrada, sistema);
           break;
-        case 8:
+        case 8://Definir nota para disciplina.
           estudante.definirNotaDisciplina(entrada, sistema);
           break;
-        case 99:
+        case 99://Sair
           entrada.close();
           System.exit(0);
           break;
 
-        default:
+        default://Opção não reconhecida.(executa default)
           System.out.println("Opção não identificada");
           break;
       }
