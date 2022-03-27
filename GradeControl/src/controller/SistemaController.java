@@ -33,7 +33,9 @@ public class SistemaController {
   public List<Curso> listarCurso() {
     return cursos;
   }
-
+  /**
+ * Adiciona disciplina ao curso
+ */
   public boolean adicionarDisciplina(String nomeCurso, Disciplina disciplina) {
     for (Curso cursoAdicao : cursos) {
       if (cursoAdicao.getNome().equals(nomeCurso)) {
@@ -42,7 +44,9 @@ public class SistemaController {
     }
     return false;
   }
-
+/**
+ * Checa a disciplina na lista e verifica se ela existe.
+ */
   public Disciplina buscarDisciplina(Curso tmpCurso, String nomeDisciplina) {
     for (Curso curso : cursos) {
       if (curso.equals(tmpCurso)) {
@@ -55,7 +59,9 @@ public class SistemaController {
     }
     return null;
   }
-
+/**
+ * Apresenta todas as disciplinas do curso presentes na lista.
+ */
   public List<Disciplina> listarTodasDisciplinas(Curso cursoVerificacao) {
     for (Curso curso : cursos) {
       if (curso.equals(cursoVerificacao)) {
@@ -64,7 +70,9 @@ public class SistemaController {
     }
     return null;
   }
-
+/**
+ * Apresenta as disciplinas da lista de acordo com o período.
+ */
   public List<Disciplina> listarDisciplinasPorPeriodo(int periodo, Curso curso) {
     List<Disciplina> tmpDisciplinas = new LinkedList<Disciplina>();
     for (Curso tmpCurso : cursos) {
@@ -77,7 +85,9 @@ public class SistemaController {
     }
     return tmpDisciplinas;
   }
-
+/**
+ * Verifica se o curso existe e adiciona o estudante.
+ */
   public boolean adicionarEstudante(Curso tmpCurso, Estudante estudante) {
     for (Curso curso : cursos) {
       if (curso.equals(tmpCurso)) {
@@ -87,7 +97,9 @@ public class SistemaController {
 
     return false;
   }
-
+  /**
+ * Procura o estudante de acordo com o curso.
+ */
   public Estudante buscarEstudante(Curso tmpCurso, String nome) {
     for (Curso curso : cursos) {
       if (curso.equals(tmpCurso)) {
@@ -99,6 +111,9 @@ public class SistemaController {
     }
     return null;
   }
+  /**
+ * Permite adição de nota na disciplina.
+ */
 
   public boolean definirNotaDisciplina(Curso tmpCurso, Estudante tmpEstudante, Disciplina tmpDisciplina,
       Float notaBimestral, int index) {
@@ -112,7 +127,9 @@ public class SistemaController {
     }
     return false;
   }
-
+/**
+ * Mostra a nota semestral do estudante.
+ */
   public float obterNotaSemestral(Curso tmpCurso, Estudante tmpEstudante, Disciplina tmpDisciplina) {
     for (Curso curso : cursos) {
       if (curso.equals(tmpCurso)) {

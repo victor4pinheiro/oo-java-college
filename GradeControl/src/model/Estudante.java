@@ -52,7 +52,7 @@ public class Estudante {
     this.disciplinas = disciplinas;
   }
    /**
- * 
+ * Adiciona nota a discplina.
  */
   public boolean definirNotaDisciplina(Disciplina tmpDisciplina, Float notaBimestral, int index) {
     for (Disciplina disciplina : disciplinas) {

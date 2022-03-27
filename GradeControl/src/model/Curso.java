@@ -63,6 +63,9 @@ public class Curso {
   public void setGraduacao(String graduacao) {
     this.graduacao = graduacao;
   }
+/**
+ * Adiciona disciplina ao curso.
+ */
 
   public boolean adicionarDisciplina(Disciplina novaDisciplina) {
     for (Disciplina disciplina : disciplinas) {
